@@ -1,0 +1,17 @@
+DROP DATABASE IF EXISTS inventory_db;
+CREATE DATABASE inventory_db;
+
+USE inventory_db;
+
+CREATE TABLE produce (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    aisle INTEGER NOT NULL,
+    color VARCHAR(16) NOT NULL
+);
+
+
+CREATE TABLE meat (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(16) NOT NULL,
+    expiration_date DATETIME NOT NULL
+);
