@@ -6,6 +6,8 @@ router.get('/', async (req, res) => {
   try {
     const readerData = await Reader.findAll({
       // TODO: Add a comment describing the functionality of this property
+      // The include is indicating that in this GET.findAll() method on the Reader to include the LibraryCard Model attributes as well
+      // this is the SQL JOIN
       include: [{ model: LibraryCard }]
     });
     res.status(200).json(readerData);

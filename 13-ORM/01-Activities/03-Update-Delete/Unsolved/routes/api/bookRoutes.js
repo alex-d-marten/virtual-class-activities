@@ -1,11 +1,69 @@
 const router = require('express').Router();
 const Book = require('../../models/Book');
 
+// GET books
+router.get('/', (req, res) => {
+  Book.findAll({
+    attributes: [
+      'book_id',
+      'title',
+      'author',
+      'isbn',
+      'pages',
+      'edition',
+      'is_paperback'
+    ]
+  })
+  .then(dbBookData => res.json(dbBookData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err)
+  })
+})
+
+
 // TODO finish the PUT route to UPDATE a book in the database with a matching book_id
-router.put('/:book_id', (req, res) => {});
+router.put('/:book_id', (req, res) => {
+  Book.update(req.body, {
+      where: {
+        book_id: req.params.book_id
+      }
+    }
+  )
+  .then(dbBookData => {
+    if(!dbBookData) {
+      res.status(404).json({ message: 'No books found with this id!' });
+      return;
+    }
+    res.json(dbBookData)
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+});
 
 // TODO finish the DELETE route to DELETE a book in the database with a matching book_id
-router.delete('/:book_id', (req, res) => {});
+router.delete('/:book_id', (req, res) => {
+  Book.destroy(
+    {
+      where: {
+        book_id: req.params.book_id
+      }
+    }
+  )
+  .then(dbBookData => {
+    if(!dbBookData) {
+      res.status(404).json({ message: 'No books found with this id!' })
+      return;
+    }
+    res.json(dbBookData)
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+});
 
 router.post('/seed', (req, res) => {
   Book.bulkCreate([

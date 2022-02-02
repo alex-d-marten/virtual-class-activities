@@ -1,0 +1,17 @@
+<div class="dish-card">
+  <div class="dish-card-header">
+    {{dish_name}}
+  </div>
+  <div class="card-body">
+    <p>
+      Description:
+      {{description}}
+    </p>
+  </div>
+  {{#if has_nuts}}
+  <h4>Food Allergen Warning: Contains Nuts!</h4>
+  {{/if}}
+  {{#unless has_nuts}}
+  <h4>No nuts in this!</h4>
+  {{/unless}}
+</div>

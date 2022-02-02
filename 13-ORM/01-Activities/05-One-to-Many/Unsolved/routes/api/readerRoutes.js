@@ -1,11 +1,17 @@
 const router = require('express').Router();
-const { Reader, LibraryCard } = require('../../models');
+const { Reader, LibraryCard, Book } = require('../../models');
 
 // GET all readers
 router.get('/', async (req, res) => {
   try {
     const readerData = await Reader.findAll({
-      include: [{ model: LibraryCard }],
+      include: [
+      { 
+        model: LibraryCard 
+      },
+      {
+        model: Book
+      }],
     });
     res.status(200).json(readerData);
   } catch (err) {
@@ -17,7 +23,14 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const readerData = await Reader.findByPk(req.params.id, {
-      include: [{ model: LibraryCard }],
+      include: [
+      { 
+        model: LibraryCard 
+      },
+      {
+        model: Book
+      }
+      ],
     });
 
     if (!readerData) {

@@ -34,7 +34,7 @@ Book.init(
     is_paperback: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
-    }
+    },
   },
   {
     sequelize,

@@ -3,7 +3,7 @@ const LibraryCard = require('./LibraryCard');
 
 Reader.hasOne(LibraryCard, {
   foreignKey: 'reader_id',
-  // TODO: Add a comment describing the functionality of this property
+  // Cascade will delete a complete row instead of just the property you are targetting. If you delete a reader_id then the associated LibraryCard row will be deleted
   onDelete: 'CASCADE',
 });
 
@@ -11,5 +11,5 @@ LibraryCard.belongsTo(Reader, {
   foreignKey: 'reader_id',
 });
 
-// TODO: Add a comment describing the functionality of this statement
+// Exporting the new Reader and LibraryCard models with the newly added associations above
 module.exports = { Reader, LibraryCard };

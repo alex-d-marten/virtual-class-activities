@@ -16,11 +16,11 @@ LibraryCard.init(
       type: DataTypes.UUID,
       defaultValue: UUIDV4
     },
-    // TODO: Add a comment describing what this column holds information for
+    // This column holds the reader_id for the LibraryCard table which is being pulled from the Reader model. This is the foreign key
     reader_id: {
       type: DataTypes.INTEGER,
       references: {
-        // TODO: Add a comment describing where `reader` comes from
+        // referencing the Reader.js Model class here, essentially the reader table
         model: 'reader',
         key: 'id'
       }
