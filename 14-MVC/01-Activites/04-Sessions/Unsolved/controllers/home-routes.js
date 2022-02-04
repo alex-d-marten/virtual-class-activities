@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
       gallery.get({ plain: true })
     );
     // TODO: Add a comment describing how we pass the session to the view
+    // sending over the 'loggedIn' session variable to the 'homepage' template
     res.render('homepage', {
       galleries,
       loggedIn: req.session.loggedIn
@@ -48,6 +49,7 @@ router.get('/gallery/:id', async (req, res) => {
 
     const gallery = dbGalleryData.get({ plain: true });
     // TODO: Add a comment describing how we pass the session to the gallery view.
+    // sending over the 'loggedIn' session variable to the 'gallery' template. The session object is on the request and loggedIn is a property of the session object
     res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
@@ -62,6 +64,7 @@ router.get('/painting/:id', async (req, res) => {
 
     const painting = dbPaintingData.get({ plain: true });
     // TODO: Add a comment describing how we pass the session to the painting view.
+    // sending over the 'loggedIn' session variable to the 'painting' template. The session object is on the request and loggedIn is a property of the session object
     res.render('painting', { painting, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);

@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3001;
 
 // Set up sessions
 const sess = {
+  // this is encoding for the session id so you cannot simply look at the SID on the browser
   secret: 'Super secret secret',
   resave: false,
   saveUninitialized: true,

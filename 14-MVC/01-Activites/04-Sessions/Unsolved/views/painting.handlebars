@@ -1,4 +1,5 @@
 {{!-- TODO: Add a comment describing the functionality of the conditional --}}
+{{!-- If the session.loggedIn is true then this HTML will be rendered --}}
 {{#if loggedIn}}
 <section class="painting">
   <img src="/images/{{painting.filename}}" alt="{{painting.description}}">
@@ -9,6 +10,7 @@
   </div>
 </section>
 {{!-- TODO: Add a comment describing the else condition below --}}
+{{!-- if the session.loggedIn is false then this HTML will be rendered --}}
 {{else}}
 <a href="/login">You must login first to view this painting</a>
 {{/if}}
