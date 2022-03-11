@@ -67,8 +67,14 @@ app.post('/submit', ({ body }, res) => {
 app.get('/populate', (req, res) => {
   // Write the query to `find()` all of the users from the User collection
   // and `populate()` them with any associated notes.
-  // YOUR CODE HERE
-  //
+  db.User.find()
+    .populate({
+      path: 'notes',
+      select: '-__v'
+    })
+    .select('-__v')
+    .then(dbData => res.json(dbData))
+    .catch(err => res.status(400).json(err));
 });
 
 app.listen(PORT, () => {
