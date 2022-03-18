@@ -1,13 +1,26 @@
 // Import `useEffect` Hook from React
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Thermostat() {
   // Set the starting temperature
-  const [temp, setTemp] = useState(0);
+  const [temp, setTemp] = useState(67);
+  // dependency:
+    // If we had a function set up to find the temp by location, we could use this dependency to update the temp everytime the location is changed.
+  const [location, setLocation] = useState('Newark, CA')
 
   // TODO: Use the `useEffect` Hook to set the `document.title` to the current temperature
   // YOUR CODE HERE
-  //
+useEffect(() => {
+  document.title = `${temp} ° Farenheit | ${location}`
+}, [location])
+
+// useEffect(() => {
+//   console.log(location)
+// })
+
+function handleChange(event) {
+  setLocation(event.target.value);
+}
 
   // Handler for increasing the temp by 1
   const increaseTemp = () => {
@@ -42,6 +55,10 @@ function Thermostat() {
         >
           Lower temperature
         </button>
+        <div>
+          <h3>Enter your location</h3>
+        <input name='location' onChange={handleChange} />
+        </div>
       </div>
     </div>
   );

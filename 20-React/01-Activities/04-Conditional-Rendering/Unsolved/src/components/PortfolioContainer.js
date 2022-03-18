@@ -9,6 +9,7 @@ export default function PortfolioContainer() {
   const [currentPage, setCurrentPage] = useState('Home');
 
   // TODO: Add a comment describing the functionality of this method
+  // this function goes through a series of conditionals and returns a component matching the conditional
   const renderPage = () => {
     if (currentPage === 'Home') {
       return <Home />;
@@ -27,8 +28,10 @@ export default function PortfolioContainer() {
   return (
     <div>
       {/* // TODO: Add a comment describing what we are passing as props */}
+      {/* The click event on the tab in the NAV  sets the page value. setCurrentPage sets the currentPage variable to the value of the page variable. */}
       <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
       {/* // TODO: Add a comment explaining what is happening on the following line */}
+      {/* renderPage function is being called */}
       {renderPage()}
     </div>
   );
